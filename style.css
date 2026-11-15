@@ -1,18 +1,14 @@
-/* ---------- Design tokens ---------- */
+/* ---------- Design tokens: dark, cinematic, restrained ---------- */
 :root {
-  --indigo: #2a1b6e;
-  --violet: #7b4dff;
-  --pink: #ff4f8b;
-  --coral: #ff7a59;
-  --yellow: #ffc93c;
-  --aqua: #14c4c4;
-  --ink: #1d1740;
-  --muted: #5d5878;
-  --white: #ffffff;
-  --lavender: #f1ecff;
-  --mint: #e3f9f6;
-  --heading-font: "Sora", sans-serif;
-  --body-font: "Source Sans 3", sans-serif;
+  --black: #0a0b0f;        /* page background */
+  --charcoal: #12141b;     /* alternate sections */
+  --panel: #1a1d27;        /* table header, cards */
+  --gold: #c8a44d;         /* single accent */
+  --gold-line: rgba(200, 164, 77, 0.55);
+  --ivory: #ece8df;        /* main text */
+  --muted: #a9a59b;        /* secondary text */
+  --heading-font: "Cormorant Garamond", Georgia, serif;
+  --body-font: "Inter", Arial, sans-serif;
 }
 
 /* ---------- Element selectors ---------- */
@@ -22,18 +18,18 @@ html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
 body {
   margin: 0;
   font-family: var(--body-font);
-  font-size: 1.1rem;
-  line-height: 1.65;
-  color: var(--ink);
-  background: var(--white);
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: var(--ivory);
+  background: var(--black);
 }
 
-h1, h2, h3 { font-family: var(--heading-font); line-height: 1.2; color: var(--indigo); }
-h1 { font-size: clamp(2.4rem, 6vw, 4rem); margin: 0.3rem 0 1rem; color: var(--white); }
-h2 { font-size: 2rem; margin: 0 0 1.5rem; }
-h3 { font-size: 1.15rem; margin: 0 0 0.4rem; }
+h1, h2, h3 { font-family: var(--heading-font); font-weight: 600; line-height: 1.15; color: var(--ivory); }
+h1 { font-size: clamp(3rem, 8vw, 5.5rem); letter-spacing: 0.02em; margin: 0.4rem 0 1.2rem; }
+h2 { font-size: 2.4rem; margin: 0 0 2rem; }
+h3 { font-size: 1.5rem; margin: 0 0 0.3rem; }
 p { max-width: 68ch; }
-a { color: var(--violet); }
+a { color: var(--gold); }
 
 .wrap { max-width: 1000px; margin: 0 auto; padding: 0 1.5rem; }
 
@@ -42,8 +38,8 @@ a { color: var(--violet); }
   position: sticky;
   top: 0;
   z-index: 10;
-  background: var(--indigo);
-  border-bottom: 4px solid var(--pink);
+  background: rgba(10, 11, 15, 0.92);
+  border-bottom: 1px solid var(--gold-line);
 }
 .nav {
   display: flex;
@@ -51,130 +47,121 @@ a { color: var(--violet); }
   align-items: center;
   max-width: 1000px;
   margin: 0 auto;
-  padding: 0.9rem 1.5rem;
+  padding: 1rem 1.5rem;
 }
-.brand { font-family: var(--heading-font); font-weight: 700; color: var(--yellow); text-decoration: none; }
-.nav-links { display: flex; gap: 0.5rem; list-style: none; margin: 0; padding: 0; }
+.brand { font-family: var(--heading-font); font-size: 1.35rem; font-weight: 700; color: var(--ivory); text-decoration: none; letter-spacing: 0.03em; }
+.nav-links { display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0; }
 .nav-links a {
-  display: block;
-  padding: 0.35rem 0.9rem;
-  color: var(--white);
+  color: var(--muted);
   text-decoration: none;
-  border-radius: 999px;
+  font-size: 0.95rem;
+  padding-bottom: 4px;
+  border-bottom: 1px solid transparent;
 }
-.nav-links a:hover { background: var(--pink); }
+.nav-links a:hover { color: var(--ivory); border-bottom-color: var(--gold); }
 
-/* ---------- Hero: the one big colourful moment ---------- */
+/* ---------- Hero: spotlight on a dark stage ---------- */
 .hero {
-  position: relative;
-  overflow: hidden;
-  padding: 6rem 0 7rem;
-  background: linear-gradient(135deg, var(--indigo) 0%, var(--violet) 55%, var(--pink) 100%);
+  display: flex;
+  align-items: center;
+  min-height: 88vh;
+  padding: 5rem 0;
+  background:
+    radial-gradient(ellipse 60% 70% at 75% 20%, rgba(200, 164, 77, 0.2), transparent 70%),
+    linear-gradient(180deg, #0a0b0f 0%, #12141b 100%);
+  border-bottom: 1px solid var(--gold-line);
 }
-.hero::before,
-.hero::after {            /* decorative circles */
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-}
-.hero::before { width: 320px; height: 320px; right: -80px; top: -80px; background: var(--yellow); opacity: 0.9; }
-.hero::after  { width: 200px; height: 200px; right: 12%; bottom: -90px; background: var(--aqua); opacity: 0.9; }
-.hero .wrap { position: relative; z-index: 1; }
+.hero .wrap { width: 100%; }
+.hero-text { animation: fade-in 1.4s ease both; }
+@keyframes fade-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 
-.hero-role {
-  display: inline-block;
-  margin: 0;
-  padding: 0.35rem 1rem;
-  background: var(--yellow);
-  color: var(--indigo);
-  font-weight: 600;
-  border-radius: 999px;
+.hero-role { margin: 0; color: var(--gold); font-weight: 500; letter-spacing: 0.04em; }
+h1::after {                 /* thin gold rule under the name */
+  content: "";
+  display: block;
+  width: 90px;
+  height: 2px;
+  margin-top: 1.4rem;
+  background: var(--gold);
 }
-.lead { max-width: 34rem; font-size: 1.3rem; color: var(--white); }
+.lead { max-width: 34rem; font-size: 1.2rem; color: var(--muted); }
 
 /* ---------- Buttons ---------- */
 .btn {
   display: inline-block;
-  margin: 0.5rem 0.6rem 0 0;
-  padding: 0.75rem 1.6rem;
-  background: var(--yellow);
-  color: var(--indigo);
+  margin: 1rem 1rem 0 0;
+  padding: 0.8rem 1.8rem;
+  background: var(--gold);
+  color: var(--black);
   font-weight: 600;
   text-decoration: none;
-  border-radius: 999px;
-  border: 2px solid var(--yellow);
+  border: 1px solid var(--gold);
+  border-radius: 2px;
 }
-.btn:hover { background: var(--white); border-color: var(--white); color: var(--pink); }
-.btn-outline { background: transparent; color: var(--white); border-color: var(--white); }
-.btn-outline:hover { background: var(--white); color: var(--indigo); }
+.btn:hover { background: transparent; color: var(--gold); }
+.btn-outline { background: transparent; color: var(--ivory); border-color: var(--gold-line); }
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
 
-/* ---------- Section bands ---------- */
-.section { padding: 4.5rem 0; }
-.section h2::after {       /* colour bar under every heading */
+/* ---------- Sections ---------- */
+.section { padding: 5rem 0; }
+.section h2::after {
   content: "";
   display: block;
-  width: 70px;
-  height: 6px;
-  margin-top: 0.6rem;
-  border-radius: 3px;
-  background: linear-gradient(90deg, var(--pink), var(--yellow));
+  width: 60px;
+  height: 2px;
+  margin-top: 0.8rem;
+  background: var(--gold);
 }
-
-.band-about { background: var(--white); }
-.band-education { background: var(--lavender); }
-.band-aspirations { background: var(--indigo); }
-.band-aspirations h2 { color: var(--white); }
+.band-about { background: var(--black); }
+.band-education { background: var(--charcoal); border-top: 1px solid var(--gold-line); border-bottom: 1px solid var(--gold-line); }
+.band-aspirations { background: var(--black); }
 
 /* ---------- Education table ---------- */
-.table-wrap {
-  overflow-x: auto;                 /* scrolls sideways on small screens */
-  border-radius: 14px;
-  border: 3px solid var(--indigo);   /* outer frame */
-  box-shadow: 0 6px 18px rgba(42, 27, 110, 0.15);
-}
-.edu-table { width: 100%; min-width: 560px; border-collapse: collapse; background: var(--white); }
+.table-wrap { overflow-x: auto; border: 1px solid var(--gold); }
+.edu-table { width: 100%; min-width: 560px; border-collapse: collapse; }
 .edu-table th, .edu-table td {
-  padding: 1rem 1.2rem;
+  padding: 1.1rem 1.3rem;
   text-align: left;
-  border: 2px solid var(--violet);   /* visible grid lines */
+  border: 1px solid var(--gold-line);       /* visible grid lines */
 }
 .edu-table thead th {
-  background: linear-gradient(90deg, var(--violet), var(--pink));
-  color: var(--white);
+  background: var(--panel);
+  color: var(--gold);
   font-family: var(--heading-font);
-  font-size: 1rem;
+  font-size: 1.15rem;
+  font-weight: 700;
 }
-.edu-table tbody th { color: var(--indigo); font-family: var(--heading-font); font-size: 1rem; }
-.edu-table tbody tr:nth-child(even) { background: var(--lavender); }
-.edu-table tbody tr:hover { background: #ffe3ee; }
-.edu-table td:last-child { font-weight: 600; color: var(--violet); }
+.edu-table tbody th { font-family: var(--heading-font); font-size: 1.15rem; color: var(--ivory); }
+.edu-table td { color: var(--muted); }
+.edu-table tbody tr:nth-child(even) { background: rgba(255, 255, 255, 0.03); }
+.edu-table tbody tr:hover { background: rgba(200, 164, 77, 0.1); }
+.edu-table td:last-child { color: var(--gold); font-weight: 600; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 
-/* ---------- Cards ---------- */
+/* ---------- Professional goal cards ---------- */
 .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
 .card {
-  padding: 1.6rem;
-  border-radius: 18px;
-  background: var(--yellow);
-  transition: transform 0.2s;
+  padding: 1.8rem;
+  background: var(--panel);
+  border: 1px solid var(--gold-line);
+  border-left: 3px solid var(--gold);
 }
-.card:nth-child(2) { background: var(--aqua); }
-.card h3 { color: var(--indigo); font-size: 1.4rem; }
-.card p { margin: 0; font-weight: 600; color: var(--indigo); }
-.card:hover { transform: translateY(-6px); }
+.card h3 { color: var(--ivory); }
+.card p { margin: 0; color: var(--muted); }
+.card:hover { border-color: var(--gold); }
 
 /* ---------- Footer ---------- */
-footer { text-align: center; padding: 1.5rem; background: var(--ink); color: var(--white); }
+footer { text-align: center; padding: 2rem 1.5rem; background: var(--charcoal); border-top: 1px solid var(--gold-line); color: var(--muted); font-size: 0.9rem; }
 footer p { margin: 0 auto; }
 
 /* ---------- Accessibility ---------- */
-a:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
-@media (prefers-reduced-motion: reduce) { .card { transition: none; } }
+a:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) { .hero-text { animation: none; } html { scroll-behavior: auto; } }
 
 /* ---------- Mobile ---------- */
 @media (max-width: 700px) {
-  .nav { flex-direction: column; gap: 0.5rem; }
-  .nav-links { flex-wrap: wrap; justify-content: center; }
-  .hero { padding: 4rem 0 5rem; }
-  .hero::before { width: 200px; height: 200px; right: -70px; top: -70px; }
+  .nav { flex-direction: column; gap: 0.6rem; }
+  .nav-links { gap: 1.2rem; flex-wrap: wrap; justify-content: center; }
+  .hero { min-height: auto; padding: 4rem 0; }
+  .section { padding: 3.5rem 0; }
 }

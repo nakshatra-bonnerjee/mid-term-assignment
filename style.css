@@ -138,9 +138,17 @@ h1::after {                 /* thin gold rule under the name */
 }
 .band-about { background: var(--black); }
 .band-education { background: var(--charcoal); border-top: 1px solid var(--gold-line); border-bottom: 1px solid var(--gold-line); }
+.band-olympiads { background: var(--black); }
+.band-experience { background: var(--charcoal); border-top: 1px solid var(--gold-line); border-bottom: 1px solid var(--gold-line); }
 .band-aspirations { background: var(--black); }
+.reg-id { margin: -0.8rem 0 1.5rem; color: var(--muted); }
+.reg-id strong { color: var(--gold); font-weight: 600; letter-spacing: 0.03em; }
+.olympiad-table { min-width: 640px; font-size: 0.95rem; }
+.olympiad-table th, .olympiad-table td { padding: 0.9rem 1rem; }
+.olympiad-table td { text-align: center; }
+.olympiad-table thead th:nth-child(n+2) { text-align: center; }
 
-/* ---------- Education table ---------- */
+/* ---------- Tables (Education + Olympiads) ---------- */
 .table-wrap { overflow-x: auto; border: 1px solid var(--gold); }
 .edu-table { width: 100%; min-width: 560px; border-collapse: collapse; }
 .edu-table th, .edu-table td {
@@ -162,8 +170,8 @@ h1::after {                 /* thin gold rule under the name */
 .edu-table td:last-child { color: var(--gold); font-weight: 600; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 
-/* ---------- Professional goal cards ---------- */
-.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+/* ---------- Cards ---------- */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
 .card {
   padding: 1.8rem;
   background: var(--panel);
@@ -172,7 +180,12 @@ h1::after {                 /* thin gold rule under the name */
 }
 .card h3 { color: var(--ivory); }
 .card p { margin: 0; color: var(--muted); }
+.roles-grid { grid-template-columns: repeat(2, 1fr); }
 .card:hover { border-color: var(--gold); }
+.card .card-meta { color: var(--gold); font-weight: 500; margin: 0 0 0.4rem; font-size: 0.95rem; }
+.card ul { margin: 0.8rem 0 0; padding-left: 1.2rem; color: var(--muted); }
+.card li { margin-bottom: 0.6rem; padding-left: 0.2rem; }
+.card li::marker { color: var(--gold); }
 
 /* ---------- Footer ---------- */
 footer { text-align: center; padding: 2rem 1.5rem; background: var(--charcoal); border-top: 1px solid var(--gold-line); color: var(--muted); font-size: 0.9rem; }
@@ -185,9 +198,10 @@ a:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
 /* ---------- Mobile ---------- */
 @media (max-width: 700px) {
   .nav { flex-direction: column; gap: 0.6rem; }
-  .nav-links { gap: 1.2rem; flex-wrap: wrap; justify-content: center; }
+  .nav-links { gap: 0.4rem 1.2rem; flex-wrap: wrap; justify-content: center; width: 100%; }
   .hero { min-height: auto; padding: 4rem 0; }
   .hero .wrap { flex-direction: column-reverse; align-items: flex-start; gap: 2.5rem; }
   .hero-photo img { width: 220px; }
   .section { padding: 3.5rem 0; }
+  .roles-grid { grid-template-columns: 1fr; }
 }

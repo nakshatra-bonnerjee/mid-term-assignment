@@ -44,16 +44,7 @@ a { color: var(--blue); }
   background: var(--navy);
   color: var(--white);
 }
-.profile {
-  display: block;
-  width: 100%;
-  max-width: 200px;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  border-radius: 4px;
-  background: #2b3d5c;
-}
-#top-bar h1 { margin: 1.5rem 0 0.4rem; font-size: 1.55rem; font-weight: 700; color: var(--white); }
+#top-bar h1 { margin: 0 0 0.4rem; font-size: 1.55rem; font-weight: 700; color: var(--white); }
 .role { margin: 0; font-size: 0.95rem; color: var(--navy-soft); }
 
 .nav-links { list-style: none; margin: 2rem 0 0; padding: 0; }
@@ -66,6 +57,11 @@ a { color: var(--blue); }
   border-left: 2px solid transparent;
 }
 .nav-links a:hover { color: var(--white); border-left-color: #6f9bd6; }
+
+/* sidebar contact */
+.side-contact { margin-top: 2rem; padding-top: 1.25rem; border-top: 1px solid rgba(255, 255, 255, 0.18); }
+.side-contact a { display: block; margin-bottom: 0.4rem; color: var(--navy-soft); font-size: 0.88rem; text-decoration: none; overflow-wrap: anywhere; }
+.side-contact a:hover { color: var(--white); text-decoration: underline; }
 
 /* ---------- Content ---------- */
 .content { padding: 3.5rem 4rem 2rem; max-width: 1000px; }
@@ -82,6 +78,11 @@ a { color: var(--blue); }
 .entry ul { margin: 0.4rem 0 0; padding-left: 1.1rem; }
 .entry li { margin-bottom: 0.4rem; }
 .entry-stack { display: block; }
+
+/* ---------- Skills ---------- */
+.skills-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 0 2rem; }
+.skills-list li { padding: 0.55rem 0; border-bottom: 1px solid var(--line); }
+.entry p { margin: 0; }
 
 /* ---------- Tables ---------- */
 .table-wrap { overflow-x: auto; border: 1px solid var(--line-strong); }
@@ -100,14 +101,13 @@ footer p { margin: 0; }
 
 /* ---------- Accessibility ---------- */
 a:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
-.nav-links a:focus-visible { outline-color: var(--white); }
+.nav-links a:focus-visible, .side-contact a:focus-visible { outline-color: var(--white); }
 
 /* ---------- Tablet and mobile ---------- */
 @media (max-width: 900px) {
   .layout { display: block; }
   #top-bar { position: static; height: auto; padding: 1.75rem 1.25rem; }
-  .profile { max-width: 130px; }
-  #top-bar h1 { margin-top: 1rem; font-size: 1.4rem; }
+  #top-bar h1 { font-size: 1.4rem; }
   .nav-links { display: flex; flex-wrap: wrap; gap: 0.2rem 1.25rem; margin-top: 1.25rem; }
   .nav-links a { padding: 0.25rem 0; border-left: none; border-bottom: 2px solid transparent; }
   .nav-links a:hover { border-bottom-color: #6f9bd6; }
